@@ -74,7 +74,7 @@ python -m src.agent.run_cases --mode llm --cases examples/cases-retest.json --ou
 
 - `examples/traces/llm/`：初轮真实模型运行记录，其中包含两个失败用例，供缺陷诊断与复盘。
 - `examples/traces/retest/`：V2 真实模型定向复测记录，保留初轮结果而不覆盖。
-- `examples/traces/live/conflict.json`：此前单次冲突问答真实运行记录（若本地存在），可以作为补充独立证据。
+- `examples/traces/live/conflict.json`：单次真实 LLM 文档冲突问答记录，作为独立运行证据。
 - `examples/traces/mock/`：模拟规划器结果，仅证明工程流程，不证明真实模型决策质量。
 - Trace 中 `decision_basis` 是简短的外部动作理由，不是模型内部思维链。
 
@@ -101,8 +101,6 @@ python -m src.agent.cli --mode llm --data examples/kb-no-conflict.json --questio
 | 证据 | `examples/traces/retest/02-conflict.json` | `examples/traces/live/no-conflict.json` |
 
 **解释**：模型真实读取两个版本，并在证据变化后改变最终决定（请求澄清 → 明确回答）；两次使用相同工具顺序，**并未证明检索/读取工具路径发生变化**。这个可复现对照直接证明最终答案和决策状态对知识库内容敏感。修改后的知识库是人为构建的合成样例，未涵盖真实生效日期或权限管理。
-
-提交前需确认本地 `examples/kb-no-conflict.json`、`examples/traces/live/no-conflict.json`、`examples/traces/retest/02-conflict.json` 已包含在仓库内；本补丁只更新文档，不会生成或替换用户本机已有的真实 Trace。
 
 ## 已知限制与风险
 
