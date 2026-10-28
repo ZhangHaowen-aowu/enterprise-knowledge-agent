@@ -115,4 +115,4 @@ python -m src.agent.cli --mode llm --data examples/kb-no-conflict.json --questio
 
 ## 下一步
 
-优先验证真实模型两个不同路径与六项验收点。若失败，先定位是检索召回、模型动作选择、引用核验还是 API 兼容性，再考虑 embedding 检索、版本关系图、批量评测，而不是简单堆叠 Agent 数量。
+后续将重点进行 V2 版本的完整批量复测与多轮稳定性评估，并进一步改进检索召回质量、答案语义支持校验和文档版本管理。
