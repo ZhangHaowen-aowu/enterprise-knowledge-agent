@@ -99,7 +99,7 @@ src/agent/             # CLI、模型接口、工具和决策循环
 tests/                 # 可运行单元 / 验收测试
 examples/cases.json    # 输入与预期状态
 examples/traces/mock/  # 实际离线运行结果和步骤记录
-examples/traces/llm/   # 批量真实 API 运行后生成（未提供密钥则无此目录）
+examples/traces/llm/   # 真实 LLM 初轮测试记录（保留失败案例）
 examples/cases-retest.json  # 仅复测两个初轮失败案例
 data/knowledge_base.json
  docs/01-requirements.md
@@ -110,5 +110,3 @@ data/knowledge_base.json
 .env.example
 requirements.txt
 ```
-
-最终提交需在考试页面填写**题号 3、GitHub URL、最终 commit SHA**。本地 ZIP 不等于线上已提交；上传 GitHub 后使用 `git rev-parse HEAD` 获取 SHA，并核验远端仓库内容。
