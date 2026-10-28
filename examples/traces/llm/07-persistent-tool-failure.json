@@ -1,0 +1,52 @@
+{
+  "case_id": "07-persistent-tool-failure",
+  "question": "忘记登录密码怎么办？",
+  "history": [],
+  "failure_injection": {
+    "search_documents": 2
+  },
+  "expected_status": "tool_failure",
+  "status": "tool_failure",
+  "answer": "由于搜索工具暂时无法使用，目前无法提供关于忘记登录密码的具体重置流程信息。请稍后再试或联系系统管理员获取帮助。",
+  "citations": [],
+  "missing_info": [
+    "可用的文档检索服务"
+  ],
+  "tool_calls": 2,
+  "steps": 3,
+  "mode": "llm",
+  "trace": [
+    {
+      "step": 1,
+      "event": "tool_call",
+      "tool": "search_documents",
+      "arguments": {
+        "query": "忘记登录密码怎么办 重置密码流程"
+      },
+      "decision_basis": "搜索关于忘记密码的处理流程和解决方案",
+      "observation": {
+        "ok": false,
+        "error": "Injected search_documents outage (remaining failures: 1)"
+      }
+    },
+    {
+      "step": 2,
+      "event": "tool_call",
+      "tool": "search_documents",
+      "arguments": {
+        "query": "忘记登录密码 重置密码流程 忘记密码怎么办"
+      },
+      "decision_basis": "retry search for password reset procedure",
+      "observation": {
+        "ok": false,
+        "error": "Injected search_documents outage (remaining failures: 0)"
+      }
+    },
+    {
+      "step": 3,
+      "event": "final",
+      "status": "tool_failure",
+      "decision_basis": "两次搜索尝试均因工具故障失败，且无剩余重试机会"
+    }
+  ]
+}

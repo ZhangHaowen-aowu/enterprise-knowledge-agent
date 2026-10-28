@@ -1,0 +1,21 @@
+test_clear_answer_uses_exact_quote_and_read_tool (test_agent.AgentAcceptanceTests.test_clear_answer_uses_exact_quote_and_read_tool) ... ok
+test_conflict_cites_both_and_never_picks_newest_automatically (test_agent.AgentAcceptanceTests.test_conflict_cites_both_and_never_picks_newest_automatically) ... ok
+test_context_followup (test_agent.AgentAcceptanceTests.test_context_followup) ... ok
+test_document_edit_changes_answer_not_a_hardcoded_decision_log (test_agent.AgentAcceptanceTests.test_document_edit_changes_answer_not_a_hardcoded_decision_log) ... ok
+test_out_of_knowledge_refuses_to_guess (test_agent.AgentAcceptanceTests.test_out_of_knowledge_refuses_to_guess) ... ok
+test_paraphrased_question (test_agent.AgentAcceptanceTests.test_paraphrased_question) ... ok
+test_persistent_tool_failure_is_not_success (test_agent.AgentAcceptanceTests.test_persistent_tool_failure_is_not_success) ... ok
+test_transient_tool_failure_recovery_is_logged (test_agent.AgentAcceptanceTests.test_transient_tool_failure_recovery_is_logged) ... ok
+test_citation_without_read_rejected (test_agent.GuardrailTests.test_citation_without_read_rejected) ... ok
+test_conflict_request_requires_both_citations (test_agent.GuardrailTests.test_conflict_request_requires_both_citations) ... ok
+test_conflicting_evidence_blocks_answer (test_agent.GuardrailTests.test_conflicting_evidence_blocks_answer) ... ok
+test_fake_citation_rejected (test_agent.GuardrailTests.test_fake_citation_rejected) ... ok
+test_retrieved_unread_version_blocks_premature_answer (test_agent.GuardrailTests.test_retrieved_unread_version_blocks_premature_answer) ... ok
+test_search_requires_real_input (test_agent.GuardrailTests.test_search_requires_real_input) ... ok
+test_step_limit_explicitly_incomplete (test_agent.GuardrailTests.test_step_limit_explicitly_incomplete) ... ok
+test_tool_limit_explicitly_incomplete (test_agent.GuardrailTests.test_tool_limit_explicitly_incomplete) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 0.008s
+
+OK

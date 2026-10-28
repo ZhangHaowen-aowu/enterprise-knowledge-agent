@@ -1,0 +1,9 @@
+01-clear                     answered                     expected=answered
+02-conflict                  needs_clarification          expected=needs_clarification
+03-out-of-knowledge          insufficient_evidence        expected=insufficient_evidence
+04-paraphrase                answered                     expected=answered
+05-followup                  answered                     expected=answered
+06-transient-tool-failure    answered                     expected=answered
+07-persistent-tool-failure   tool_failure                 expected=tool_failure
+
+Wrote 7 real execution traces to: /mnt/data/enterprise-knowledge-agent/examples/traces/mock

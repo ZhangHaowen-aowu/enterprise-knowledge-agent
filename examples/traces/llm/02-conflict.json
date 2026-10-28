@@ -1,0 +1,23 @@
+{
+  "case_id": "02-conflict",
+  "question": "国内差旅报销期限是几天？",
+  "history": [],
+  "failure_injection": {},
+  "expected_status": "needs_clarification",
+  "status": "model_failure",
+  "answer": "模型决策接口失败，无法完成该任务。",
+  "citations": [],
+  "missing_info": [
+    "LLM connection failure: TimeoutError"
+  ],
+  "tool_calls": 0,
+  "steps": 1,
+  "mode": "llm",
+  "trace": [
+    {
+      "step": 1,
+      "event": "model_error",
+      "error": "LLM connection failure: TimeoutError"
+    }
+  ]
+}

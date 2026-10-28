@@ -1,0 +1,58 @@
+{
+  "case_id": "03-out-of-knowledge",
+  "question": "公司火星殖民旅行的补贴标准是多少？",
+  "history": [],
+  "failure_injection": {},
+  "expected_status": "insufficient_evidence",
+  "status": "insufficient_evidence",
+  "answer": "根据现有文档库，未找到关于公司火星殖民旅行补贴标准的相关信息。",
+  "citations": [],
+  "missing_info": [
+    "公司火星殖民旅行补贴标准的具体政策文件"
+  ],
+  "tool_calls": 2,
+  "steps": 3,
+  "mode": "llm",
+  "trace": [
+    {
+      "step": 1,
+      "event": "tool_call",
+      "tool": "search_documents",
+      "arguments": {
+        "query": "火星殖民旅行 补贴标准"
+      },
+      "decision_basis": "Search for company policy on Mars colonization travel subsidy standards",
+      "observation": {
+        "ok": true,
+        "result": {
+          "hits": [],
+          "query": "火星殖民旅行 补贴标准",
+          "message": "No relevant documents found"
+        }
+      }
+    },
+    {
+      "step": 2,
+      "event": "tool_call",
+      "tool": "search_documents",
+      "arguments": {
+        "query": "火星殖民 旅行补贴"
+      },
+      "decision_basis": "尝试简化查询以查找火星殖民旅行补贴相关信息",
+      "observation": {
+        "ok": true,
+        "result": {
+          "hits": [],
+          "query": "火星殖民 旅行补贴",
+          "message": "No relevant documents found"
+        }
+      }
+    },
+    {
+      "step": 3,
+      "event": "final",
+      "status": "insufficient_evidence",
+      "decision_basis": "两次搜索均未找到相关文档，文档库中无此信息"
+    }
+  ]
+}

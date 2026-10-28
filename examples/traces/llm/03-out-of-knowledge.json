@@ -1,0 +1,162 @@
+{
+  "case_id": "03-out-of-knowledge",
+  "question": "公司火星殖民旅行的补贴标准是多少？",
+  "history": [],
+  "failure_injection": {},
+  "expected_status": "insufficient_evidence",
+  "status": "incomplete_tool_limit",
+  "answer": "工具调用次数达到上限，任务尚未完成。",
+  "citations": [],
+  "missing_info": [
+    "额外的检索/阅读预算"
+  ],
+  "tool_calls": 7,
+  "steps": 8,
+  "mode": "llm",
+  "trace": [
+    {
+      "step": 1,
+      "event": "tool_call",
+      "tool": "search_documents",
+      "arguments": {
+        "query": "火星殖民旅行 补贴标准 Mars colonization travel subsidy"
+      },
+      "decision_basis": "搜索公司火星殖民旅行补贴相关政策",
+      "observation": {
+        "ok": true,
+        "result": {
+          "hits": [],
+          "query": "火星殖民旅行 补贴标准 Mars colonization travel subsidy",
+          "message": "No relevant documents found"
+        }
+      }
+    },
+    {
+      "step": 2,
+      "event": "tool_call",
+      "tool": "search_documents",
+      "arguments": {
+        "query": "火星殖民 补贴 Mars colonization subsidy travel allowance"
+      },
+      "decision_basis": "Search for Mars colonization travel subsidy with simplified query",
+      "observation": {
+        "ok": true,
+        "result": {
+          "hits": [],
+          "query": "火星殖民 补贴 Mars colonization subsidy travel allowance",
+          "message": "No relevant documents found"
+        }
+      }
+    },
+    {
+      "step": 3,
+      "event": "tool_call",
+      "tool": "search_documents",
+      "arguments": {
+        "query": "火星殖民 旅行 补贴 Mars colonization travel subsidy policy"
+      },
+      "decision_basis": "Search for Mars colonization travel subsidy policy with alternative terms",
+      "observation": {
+        "ok": true,
+        "result": {
+          "hits": [],
+          "query": "火星殖民 旅行 补贴 Mars colonization travel subsidy policy",
+          "message": "No relevant documents found"
+        }
+      }
+    },
+    {
+      "step": 4,
+      "event": "tool_call",
+      "tool": "search_documents",
+      "arguments": {
+        "query": "火星 旅行 补贴 Mars travel subsidy policy allowance"
+      },
+      "decision_basis": "Try alternative search terms for Mars colonization travel subsidy",
+      "observation": {
+        "ok": true,
+        "result": {
+          "hits": [],
+          "query": "火星 旅行 补贴 Mars travel subsidy policy allowance",
+          "message": "No relevant documents found"
+        }
+      }
+    },
+    {
+      "step": 5,
+      "event": "tool_call",
+      "tool": "search_documents",
+      "arguments": {
+        "query": "火星 补贴 Mars subsidy travel policy"
+      },
+      "decision_basis": "Try additional search variations for Mars colonization travel subsidy information",
+      "observation": {
+        "ok": true,
+        "result": {
+          "hits": [],
+          "query": "火星 补贴 Mars subsidy travel policy",
+          "message": "No relevant documents found"
+        }
+      }
+    },
+    {
+      "step": 6,
+      "event": "tool_call",
+      "tool": "search_documents",
+      "arguments": {
+        "query": "travel subsidy Mars colonization employee benefit"
+      },
+      "decision_basis": "Try alternative search terms for Mars travel subsidy policy",
+      "observation": {
+        "ok": true,
+        "result": {
+          "query": "travel subsidy Mars colonization employee benefit",
+          "hits": [
+            {
+              "doc_id": "D06",
+              "title": "IT 支持工单流程",
+              "version_date": "2026-02-07",
+              "scope": "全体员工",
+              "rule_key": "it_ticket",
+              "score": 24
+            }
+          ],
+          "message": "Found 1 candidates. Search hits are not evidence until read_document is called."
+        }
+      }
+    },
+    {
+      "step": 7,
+      "event": "tool_call",
+      "tool": "read_document",
+      "arguments": {
+        "doc_id": "D06"
+      },
+      "decision_basis": "Read document D06 to check if it contains information about Mars colonization travel subsidy.",
+      "observation": {
+        "ok": true,
+        "result": {
+          "id": "D06",
+          "title": "IT 支持工单流程",
+          "version_date": "2026-02-07",
+          "scope": "全体员工",
+          "rule_key": "it_ticket",
+          "rule_value": "服务门户提交工单",
+          "tags": [
+            "IT",
+            "技术支持",
+            "问题",
+            "工单",
+            "服务"
+          ],
+          "content": "员工需要技术支持时，应在服务门户创建 IT 工单并附上问题描述。"
+        }
+      }
+    },
+    {
+      "step": 8,
+      "event": "tool_call_limit",
+      "limit": 7
+    }
+  ]
+}

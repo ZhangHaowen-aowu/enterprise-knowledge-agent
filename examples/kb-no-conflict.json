@@ -1,0 +1,100 @@
+{
+  "description": "Fully synthetic company policy and product documents. Different policy versions deliberately have unresolved precedence.",
+  "documents": [
+    {
+      "id": "D01",
+      "title": "国内差旅报销规则（版本 A）",
+      "version_date": "2026-01-10",
+      "scope": "国内差旅",
+      "rule_key": "domestic_travel_expense_deadline",
+      "rule_value": "30天",
+      "tags": [
+        "差旅",
+        "报销",
+        "费用",
+        "期限"
+      ],
+      "content": "员工国内差旅费用应在费用发生后30天内提交报销申请。"
+    },
+    {
+      "id": "D02",
+      "title": "国内差旅报销规则（版本 B）",
+      "version_date": "2026-06-05",
+      "scope": "国内差旅",
+      "rule_key": "domestic_travel_expense_deadline",
+      "rule_value": "30天",
+      "tags": [
+        "差旅",
+        "报销",
+        "费用",
+        "期限"
+      ],
+      "content": "员工国内差旅费用应在费用发生后30天内提交报销申请。"
+    },
+    {
+      "id": "D03",
+      "title": "员工请假申请流程",
+      "version_date": "2026-04-03",
+      "scope": "全体员工",
+      "rule_key": "leave_approval",
+      "rule_value": "需主管审批",
+      "tags": [
+        "休假",
+        "请假",
+        "假期",
+        "主管",
+        "审批"
+      ],
+      "content": "员工应在请假系统提交申请，并等待直属主管审批；审批完成前请假不生效。"
+    },
+    {
+      "id": "D04",
+      "title": "账号密码重置说明",
+      "version_date": "2026-03-11",
+      "scope": "全体员工",
+      "rule_key": "password_reset",
+      "rule_value": "内部身份平台",
+      "tags": [
+        "账号",
+        "口令",
+        "密码",
+        "忘记",
+        "重置",
+        "找回"
+      ],
+      "content": "忘记登录密码时，应使用内部身份平台的“重置密码”功能；无法访问时联系 IT 服务台。"
+    },
+    {
+      "id": "D05",
+      "title": "视频编辑器字幕功能",
+      "version_date": "2026-05-20",
+      "scope": "视频编辑器产品",
+      "rule_key": "video_subtitles",
+      "rule_value": "支持字幕生成和修改",
+      "tags": [
+        "视频",
+        "编辑",
+        "自动字幕",
+        "文字",
+        "产品"
+      ],
+      "content": "视频编辑器支持自动生成字幕，也允许用户在编辑页面手动修改字幕内容。"
+    },
+    {
+      "id": "D06",
+      "title": "IT 支持工单流程",
+      "version_date": "2026-02-07",
+      "scope": "全体员工",
+      "rule_key": "it_ticket",
+      "rule_value": "服务门户提交工单",
+      "tags": [
+        "IT",
+        "技术支持",
+        "问题",
+        "工单",
+        "服务"
+      ],
+      "content": "员工需要技术支持时，应在服务门户创建 IT 工单并附上问题描述。"
+    }
+  ]
+}

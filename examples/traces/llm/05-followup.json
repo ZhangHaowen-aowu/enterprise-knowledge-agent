@@ -1,0 +1,96 @@
+{
+  "case_id": "05-followup",
+  "question": "那还需要主管同意吗？",
+  "history": [
+    {
+      "role": "user",
+      "content": "公司请假应该怎么申请？"
+    },
+    {
+      "role": "assistant",
+      "content": "请假需通过系统提交申请。"
+    }
+  ],
+  "failure_injection": {},
+  "expected_status": "answered",
+  "status": "answered",
+  "answer": "是的，请假需要主管同意。根据规定，员工提交申请后需等待直属主管审批，审批完成前请假不生效。",
+  "citations": [
+    {
+      "doc_id": "D03",
+      "quote": "员工应在请假系统提交申请，并等待直属主管审批；审批完成前请假不生效。"
+    }
+  ],
+  "missing_info": [],
+  "tool_calls": 2,
+  "steps": 4,
+  "mode": "llm",
+  "trace": [
+    {
+      "step": 1,
+      "event": "tool_call",
+      "tool": "search_documents",
+      "arguments": {
+        "query": "请假申请 主管同意"
+      },
+      "decision_basis": "查找关于请假是否需要主管同意的政策信息",
+      "observation": {
+        "ok": true,
+        "result": {
+          "query": "请假申请 主管同意",
+          "hits": [
+            {
+              "doc_id": "D03",
+              "title": "员工请假申请流程",
+              "version_date": "2026-04-03",
+              "scope": "全体员工",
+              "rule_key": "leave_approval",
+              "score": 57
+            }
+          ],
+          "message": "Found 1 candidates. Search hits are not evidence until read_document is called."
+        }
+      }
+    },
+    {
+      "step": 2,
+      "event": "tool_call",
+      "tool": "read_document",
+      "arguments": {
+        "doc_id": "D03"
+      },
+      "decision_basis": "读取员工请假申请流程文档，确认是否需要主管同意",
+      "observation": {
+        "ok": true,
+        "result": {
+          "id": "D03",
+          "title": "员工请假申请流程",
+          "version_date": "2026-04-03",
+          "scope": "全体员工",
+          "rule_key": "leave_approval",
+          "rule_value": "需主管审批",
+          "tags": [
+            "休假",
+            "请假",
+            "假期",
+            "主管",
+            "审批"
+          ],
+          "content": "员工应在请假系统提交申请，并等待直属主管审批；审批完成前请假不生效。"
+        }
+      }
+    },
+    {
+      "step": 3,
+      "event": "final_rejected",
+      "reason": "根据已读取的D03文档内容，明确说明请假需要主管审批",
+      "feedback": "Citation quote is not an exact substring of the read source"
+    },
+    {
+      "step": 4,
+      "event": "final",
+      "status": "answered",
+      "decision_basis": "Provided answer based on read document D03 confirming supervisor approval is required."
+    }
+  ]
+}

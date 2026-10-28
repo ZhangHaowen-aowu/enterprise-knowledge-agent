@@ -1,0 +1,58 @@
+{
+  "case_id": "03-out-of-knowledge",
+  "question": "公司火星殖民旅行的补贴标准是多少？",
+  "history": [],
+  "failure_injection": {},
+  "expected_status": "insufficient_evidence",
+  "status": "insufficient_evidence",
+  "answer": "现有知识库未找到支持该问题的资料。",
+  "citations": [],
+  "missing_info": [
+    "相关制度或产品原文"
+  ],
+  "tool_calls": 2,
+  "steps": 3,
+  "mode": "mock",
+  "trace": [
+    {
+      "step": 1,
+      "event": "tool_call",
+      "tool": "search_documents",
+      "arguments": {
+        "query": "公司火星殖民旅行的补贴标准是多少？"
+      },
+      "decision_basis": "先检索候选制度或产品文档",
+      "observation": {
+        "ok": true,
+        "result": {
+          "hits": [],
+          "query": "公司火星殖民旅行的补贴标准是多少？",
+          "message": "No relevant documents found"
+        }
+      }
+    },
+    {
+      "step": 2,
+      "event": "tool_call",
+      "tool": "search_documents",
+      "arguments": {
+        "query": "火星殖民旅行的补贴标准是多少？"
+      },
+      "decision_basis": "没有候选结果，改写检索查询",
+      "observation": {
+        "ok": true,
+        "result": {
+          "hits": [],
+          "query": "火星殖民旅行的补贴标准是多少？",
+          "message": "No relevant documents found"
+        }
+      }
+    },
+    {
+      "step": 3,
+      "event": "final",
+      "status": "insufficient_evidence",
+      "decision_basis": "两次检索均无匹配"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "mode": "llm",
+  "note": "Actual external model outputs; inspect for quality and factual support.",
+  "passed": 2,
+  "total": 2,
+  "cases": [
+    {
+      "case": "02-conflict",
+      "expected": "needs_clarification",
+      "actual": "needs_clarification",
+      "passed": true,
+      "tool_calls": 3,
+      "steps": 4,
+      "tool_path": [
+        "search_documents",
+        "read_document",
+        "read_document"
+      ]
+    },
+    {
+      "case": "03-out-of-knowledge",
+      "expected": "insufficient_evidence",
+      "actual": "insufficient_evidence",
+      "passed": true,
+      "tool_calls": 2,
+      "steps": 3,
+      "tool_path": [
+        "search_documents",
+        "search_documents"
+      ]
+    }
+  ]
+}

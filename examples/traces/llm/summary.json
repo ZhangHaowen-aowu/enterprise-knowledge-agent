@@ -1,0 +1,95 @@
+{
+  "mode": "llm",
+  "note": "Actual external model outputs; inspect for quality and factual support.",
+  "passed": 5,
+  "total": 7,
+  "cases": [
+    {
+      "case": "01-clear",
+      "expected": "answered",
+      "actual": "answered",
+      "passed": true,
+      "tool_calls": 2,
+      "steps": 3,
+      "tool_path": [
+        "search_documents",
+        "read_document"
+      ]
+    },
+    {
+      "case": "02-conflict",
+      "expected": "needs_clarification",
+      "actual": "model_failure",
+      "passed": false,
+      "tool_calls": 0,
+      "steps": 1,
+      "tool_path": []
+    },
+    {
+      "case": "03-out-of-knowledge",
+      "expected": "insufficient_evidence",
+      "actual": "incomplete_tool_limit",
+      "passed": false,
+      "tool_calls": 7,
+      "steps": 8,
+      "tool_path": [
+        "search_documents",
+        "search_documents",
+        "search_documents",
+        "search_documents",
+        "search_documents",
+        "search_documents",
+        "read_document"
+      ]
+    },
+    {
+      "case": "04-paraphrase",
+      "expected": "answered",
+      "actual": "answered",
+      "passed": true,
+      "tool_calls": 2,
+      "steps": 3,
+      "tool_path": [
+        "search_documents",
+        "read_document"
+      ]
+    },
+    {
+      "case": "05-followup",
+      "expected": "answered",
+      "actual": "answered",
+      "passed": true,
+      "tool_calls": 2,
+      "steps": 4,
+      "tool_path": [
+        "search_documents",
+        "read_document"
+      ]
+    },
+    {
+      "case": "06-transient-tool-failure",
+      "expected": "answered",
+      "actual": "answered",
+      "passed": true,
+      "tool_calls": 3,
+      "steps": 4,
+      "tool_path": [
+        "search_documents",
+        "search_documents",
+        "read_document"
+      ]
+    },
+    {
+      "case": "07-persistent-tool-failure",
+      "expected": "tool_failure",
+      "actual": "tool_failure",
+      "passed": true,
+      "tool_calls": 2,
+      "steps": 3,
+      "tool_path": [
+        "search_documents",
+        "search_documents"
+      ]
+    }
+  ]
+}

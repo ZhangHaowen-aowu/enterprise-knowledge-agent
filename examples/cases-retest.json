@@ -1,0 +1,12 @@
+[
+  {
+    "id": "02-conflict",
+    "question": "国内差旅报销期限是几天？",
+    "expected_status": "needs_clarification"
+  },
+  {
+    "id": "03-out-of-knowledge",
+    "question": "公司火星殖民旅行的补贴标准是多少？",
+    "expected_status": "insufficient_evidence"
+  }
+]

@@ -1,0 +1,10 @@
+01-clear                     status=answered                   tool_path=search_documents -> read_document
+02-conflict                  status=needs_clarification        tool_path=search_documents -> read_document -> read_document
+03-out-of-knowledge          status=insufficient_evidence      tool_path=search_documents -> search_documents
+04-paraphrase                status=answered                   tool_path=search_documents -> read_document
+05-followup                  status=answered                   tool_path=search_documents -> read_document
+06-transient-tool-failure    status=answered                   tool_path=search_documents -> search_documents -> read_document
+07-persistent-tool-failure   status=tool_failure               tool_path=search_documents -> search_documents
+
+Cases: 7, distinct tool paths: 4, trace records missing fields: 0
+IMPORTANT: Scripted MockPlanner; these paths do not prove real model-driven ReAct.

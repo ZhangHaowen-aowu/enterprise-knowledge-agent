@@ -1,0 +1,9 @@
+[
+  {"id":"01-clear","question":"员工忘记登录密码时应该怎么办？","expected_status":"answered"},
+  {"id":"02-conflict","question":"国内差旅报销期限是几天？","expected_status":"needs_clarification"},
+  {"id":"03-out-of-knowledge","question":"公司火星殖民旅行的补贴标准是多少？","expected_status":"insufficient_evidence"},
+  {"id":"04-paraphrase","question":"员工口令忘了，怎么找回账号？","expected_status":"answered"},
+  {"id":"05-followup","question":"那还需要主管同意吗？","history":[{"role":"user","content":"公司请假应该怎么申请？"},{"role":"assistant","content":"请假需通过系统提交申请。"}],"expected_status":"answered"},
+  {"id":"06-transient-tool-failure","question":"忘记登录密码怎么办？","fail_tools":{"search_documents":1},"expected_status":"answered"},
+  {"id":"07-persistent-tool-failure","question":"忘记登录密码怎么办？","fail_tools":{"search_documents":2},"expected_status":"tool_failure"}
+]

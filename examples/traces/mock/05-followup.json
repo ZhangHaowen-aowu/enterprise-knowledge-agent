@@ -1,0 +1,90 @@
+{
+  "case_id": "05-followup",
+  "question": "那还需要主管同意吗？",
+  "history": [
+    {
+      "role": "user",
+      "content": "公司请假应该怎么申请？"
+    },
+    {
+      "role": "assistant",
+      "content": "请假需通过系统提交申请。"
+    }
+  ],
+  "failure_injection": {},
+  "expected_status": "answered",
+  "status": "answered",
+  "answer": "员工应在请假系统提交申请，并等待直属主管审批；审批完成前请假不生效。",
+  "citations": [
+    {
+      "doc_id": "D03",
+      "quote": "员工应在请假系统提交申请，并等待直属主管审批；审批完成前请假不生效。"
+    }
+  ],
+  "missing_info": [],
+  "tool_calls": 2,
+  "steps": 3,
+  "mode": "mock",
+  "trace": [
+    {
+      "step": 1,
+      "event": "tool_call",
+      "tool": "search_documents",
+      "arguments": {
+        "query": "公司请假应该怎么申请？ 那还需要主管同意吗？"
+      },
+      "decision_basis": "先检索候选制度或产品文档",
+      "observation": {
+        "ok": true,
+        "result": {
+          "query": "公司请假应该怎么申请？ 那还需要主管同意吗？",
+          "hits": [
+            {
+              "doc_id": "D03",
+              "title": "员工请假申请流程",
+              "version_date": "2026-04-03",
+              "scope": "全体员工",
+              "rule_key": "leave_approval",
+              "score": 45
+            }
+          ],
+          "message": "Found 1 candidates. Search hits are not evidence until read_document is called."
+        }
+      }
+    },
+    {
+      "step": 2,
+      "event": "tool_call",
+      "tool": "read_document",
+      "arguments": {
+        "doc_id": "D03"
+      },
+      "decision_basis": "读取检索到的原文，检查依据或版本冲突",
+      "observation": {
+        "ok": true,
+        "result": {
+          "id": "D03",
+          "title": "员工请假申请流程",
+          "version_date": "2026-04-03",
+          "scope": "全体员工",
+          "rule_key": "leave_approval",
+          "rule_value": "需主管审批",
+          "tags": [
+            "休假",
+            "请假",
+            "假期",
+            "主管",
+            "审批"
+          ],
+          "content": "员工应在请假系统提交申请，并等待直属主管审批；审批完成前请假不生效。"
+        }
+      }
+    },
+    {
+      "step": 3,
+      "event": "final",
+      "status": "answered",
+      "decision_basis": "答案可由读取的原文直接支持"
+    }
+  ]
+}
