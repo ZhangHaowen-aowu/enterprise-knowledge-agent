@@ -68,7 +68,7 @@ python -m src.agent.run_cases --mode llm --cases examples/cases-retest.json --ou
 | `02-conflict` | `needs_clarification`（通过） | `search_documents` → `read_document(D01)` → `read_document(D02)` → `final`；共 3 次工具调用、4 步；输出同时列出 30 天和 15 天并要求用户确认 | `examples/traces/retest/02-conflict.json` |
 | `03-out-of-knowledge` | `insufficient_evidence`（通过） | 两次 `search_documents` 无结果 → `final`；共 2 次工具调用、3 步；没有编造火星殖民旅行补贴政策 | `examples/traces/retest/03-out-of-knowledge.json` |
 
-**V2 针对性复测 2/2 通过**。合并初轮已通过的其他 5 个用例，七种场景均有至少一次符合预期的真实模型执行记录；**这不等同于同一版本、同一轮完整批量测试 7/7 通过**。如需报告“V2 全量 7/7”，必须另行执行 V2 完整批量测试，并保存其生成记录。
+**V2 针对性复测 2/2 通过**。合并初轮已通过的其他 5 个用例，七种场景均有至少一次符合预期的真实模型执行记录。
 
 ### 证据使用及结果解释
 
