@@ -1,4 +1,4 @@
-# Enterprise Knowledge QA Agent | 校招项目题 3
+# Enterprise Knowledge QA Agent
 
 > **答题范围**：小影科技 2027 校招 AI Agent 开发岗位「企业知识问答 Agent」。本仓库使用**合成制度和产品文档**，与任何真实企业内部知识库无关。禁止向仓库提交真实 API Key 或隐私资料。
 
