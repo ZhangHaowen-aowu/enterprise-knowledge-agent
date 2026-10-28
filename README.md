@@ -17,7 +17,7 @@ python -m src.agent.cli --mode mock --question "国内差旅报销期限是几�
 
 ## 真实 LLM 自主决策（重要）
 
-1. 在本地复制 `.env.example` 为 `.env`（Windows PowerShell：`Copy-Item .env.example .env`；macOS/Linux：`cp .env.example .env`；`.env` 已在 `.gitignore` 中忽略），写入你自己有权限使用的 OpenAI-compatible API 地址、密钥、模型名；**不要把密钥发给其他人或上传 GitHub**。
+1. 在本地复制 `.env.example` 为 `.env`（Windows PowerShell：`Copy-Item .env.example .env`；macOS/Linux：`cp .env.example .env`；`.env` 已在 `.gitignore` 中忽略），写入你自己有权限使用的 OpenAI-compatible API 地址、密钥、模型名。
 2. 运行：
 
 ```bash
@@ -36,17 +36,6 @@ python -m src.agent.run_cases --mode llm --cases examples/cases-retest.json --ou
 `--mode llm` **每一个 Agent 步骤调用一次真实模型**，模型基于可见的检索结果自主返回下一步 JSON 动作（`search_documents` / `read_document` / `final`）。没有调用真实 API 就不应声称已验证大模型 ReAct。模型若返回非法决策、无效引用或直接绕过冲突，会被校验拒绝，下一轮看到校验反馈；如果超出工具/步骤预算则返回明确未完成状态。实际模型效果取决于所用模型、供应商的兼容性与运行结果。
 
 有些兼容服务不支持 `response_format: {"type":"json_object"}`：可以在 `.env` 中设 `LLM_JSON_MODE=0`，但仍必须返回可解析的 JSON。工具均为本地函数，**不依赖在线向量数据库**；无须前端、部署或 Multi-Agent。
-
-
-### 真实文档变更对照（已按提交者反馈完成）
-
-对 `data/knowledge_base.json` 保持不变，另建 `examples/kb-no-conflict.json`（D02 从 15 天变成 30 天），然后运行：
-
-```bash
-python -m src.agent.cli --mode llm --data examples/kb-no-conflict.json --question "国内差旅报销期限是几天？" --print-trace --trace-out examples/traces/live/no-conflict.json
-```
-
-实测：原始冲突版本返回 `needs_clarification`，D02 改为 30 天后返回 `answered` 并分别引用 D01/D02；两次均为 3 次工具调用、4 步，但最终决策改变。V2 针对性复测两项均通过；更详细的测试边界与第一次 5/7 失败记录见 `docs/03-evaluation.md`。
 
 ## 自定义问题及工具故障
 
