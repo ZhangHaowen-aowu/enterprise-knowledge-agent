@@ -25,7 +25,17 @@ python -m src.agent.cli --mode llm --question "国内差旅报销期限是几天
 python -m src.agent.run_cases --mode llm
 ```
 
-已知真实 API 批量初测（2026-10-28，使用者提供日志）为 5/7 符合预期：冲突用例遇到 `TimeoutError`，资料外用例出现重复检索导致 `incomplete_tool_limit`。本版本新增瞬时 API 故障有限重试、两次无结果检索后的防重复护栏，需要重新运行模型才能确认改进效果。可以只复测这两项：
+真实 LLM 初轮批量测试有 5/7 个场景符合预期。
+经 Trace 分析，发现 API 超时及资料不足场景重复检索的问题。
+
+V2 增加了有限 API 重试和连续空检索保护。
+修复后定向复测 2/2 通过，七类验收场景均已有成功的真实 LLM 执行记录。
+
+此外，通过修改 D02 报销期限进行了真实模型对照实验：
+原始文档冲突时返回 needs_clarification；
+消除冲突后返回 answered。
+
+完整实验结果与原始失败记录见 docs/03-evaluation.md。
 
 ```bash
 python -m src.agent.run_cases --mode llm --cases examples/cases-retest.json --output examples/traces/retest
