@@ -33,7 +33,9 @@ python -m src.agent.run_cases --mode mock
 
 ## 真实模型评估：初轮与针对性复测（2026-10-28）
 
-使用者在 Windows PowerShell 本地连接 **SiliconFlow International API**，通过 `--mode llm` 调用实际模型；精确模型 ID 以使用者本地 `.env` 中 `OPENAI_MODEL` 配置为准，提交时应核对并补充记录。此处结论来自使用者实际提供的命令行输出和 Trace；未将 Mock 结果冒充真实模型结果。
+模型提供方：SiliconFlow International
+模型：Qwen/Qwen3.5-35B-A3B
+调用方式：OpenAI-compatible Chat Completions API
 
 ### 初轮批量运行
 
