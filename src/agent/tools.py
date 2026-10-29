@@ -50,7 +50,7 @@ class KnowledgeTools:
     def _maybe_fail(self, tool: str) -> None:
         if self.fail_tools.get(tool, 0) > 0:
             self.fail_tools[tool] -= 1
-            raise ToolError(f"Injected {tool} outage (remaining failures: {self.fail_tools[tool]})")
+            raise ToolError(f"{tool} is currently unavailable. Retry may succeed.")
 
     def search_documents(self, query: str, top_k: int = 4) -> dict:
         self._maybe_fail("search_documents")
