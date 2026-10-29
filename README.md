@@ -31,6 +31,8 @@ python -m src.agent.run_cases --mode llm
 V2 增加了有限 API 重试和连续空检索保护。
 修复后定向复测 2/2 通过，七类验收场景均已有成功的真实 LLM 执行记录。
 
+V3 针对临时工具故障恢复策略进行了改进，完整真实 LLM 验收 7/7 通过。原始 Trace 保存在 examples/traces/llm-v3/，包括成功、冲突、拒答以及两类工具故障场景。
+
 此外，通过修改 D02 报销期限进行了真实模型对照实验：
 原始文档冲突时返回 needs_clarification；
 消除冲突后返回 answered。
