@@ -1,0 +1,97 @@
+{
+  "case_id": "06-transient-tool-failure",
+  "question": "忘记登录密码怎么办？",
+  "history": [],
+  "failure_injection": {
+    "search_documents": 1
+  },
+  "expected_status": "answered",
+  "status": "answered",
+  "answer": "忘记登录密码时，应使用内部身份平台的“重置密码”功能进行密码重置；如果无法访问该功能，请联系 IT 服务台寻求帮助。",
+  "citations": [
+    {
+      "doc_id": "D04",
+      "quote": "忘记登录密码时，应使用内部身份平台的“重置密码”功能；无法访问时联系 IT 服务台。"
+    }
+  ],
+  "missing_info": [],
+  "tool_calls": 3,
+  "steps": 4,
+  "mode": "llm",
+  "trace": [
+    {
+      "step": 1,
+      "event": "tool_call",
+      "tool": "search_documents",
+      "arguments": {
+        "query": "忘记密码 登录密码 密码找回 密码重置"
+      },
+      "decision_basis": "Search for password recovery/reset procedures",
+      "observation": {
+        "ok": false,
+        "error": "search_documents is currently unavailable. Retry may succeed."
+      }
+    },
+    {
+      "step": 2,
+      "event": "tool_call",
+      "tool": "search_documents",
+      "arguments": {
+        "query": "忘记密码 登录密码 密码找回 密码重置"
+      },
+      "decision_basis": "Retry search for password recovery instructions",
+      "observation": {
+        "ok": true,
+        "result": {
+          "query": "忘记密码 登录密码 密码找回 密码重置",
+          "hits": [
+            {
+              "doc_id": "D04",
+              "title": "账号密码重置说明",
+              "version_date": "2026-03-11",
+              "scope": "全体员工",
+              "rule_key": "password_reset",
+              "score": 95
+            }
+          ],
+          "message": "Found 1 candidates. Search hits are not evidence until read_document is called."
+        }
+      }
+    },
+    {
+      "step": 3,
+      "event": "tool_call",
+      "tool": "read_document",
+      "arguments": {
+        "doc_id": "D04"
+      },
+      "decision_basis": "Read password reset instructions to answer user question",
+      "observation": {
+        "ok": true,
+        "result": {
+          "id": "D04",
+          "title": "账号密码重置说明",
+          "version_date": "2026-03-11",
+          "scope": "全体员工",
+          "rule_key": "password_reset",
+          "rule_value": "内部身份平台",
+          "tags": [
+            "账号",
+            "口令",
+            "密码",
+            "忘记",
+            "重置",
+            "找回"
+          ],
+          "content": "忘记登录密码时，应使用内部身份平台的“重置密码”功能；无法访问时联系 IT 服务台。"
+        }
+      }
+    },
+    {
+      "step": 4,
+      "event": "final",
+      "status": "answered",
+      "decision_basis": "Document D04 provides clear instructions for password reset procedures"
+    }
+  ]
+}
