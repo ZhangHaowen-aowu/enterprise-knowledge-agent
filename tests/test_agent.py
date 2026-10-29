@@ -155,6 +155,37 @@ class LiveIntegrationRegressionTests(unittest.TestCase):
                 with self.assertRaisesRegex(PlannerError, "after 2 attempt"):
                     APIPlanner(model="test", api_key="test").next_action({"question": "test"})
 
+    def test_tool_retry_limit_blocks_third_failed_attempt(self):
+        class RetryPlanner:
+            def next_action(self, state):
+                if "Retry budget exhausted" in state["validation_feedback"]:
+                    return {
+                        "type": "final",
+                        "status": "tool_failure",
+                        "answer": "搜索工具连续失败，无法回答。",
+                        "citations": [],
+                        "missing_info": ["可用的搜索服务"],
+                        "reason": "重试预算耗尽",
+                    }
+                return {
+                    "type": "tool",
+                    "name": "search_documents",
+                    "arguments": {"query": "忘记密码"},
+                    "reason": "尝试检索",
+                }
+
+        agent = KnowledgeAgent(
+            KnowledgeTools(fail_tools={"search_documents": 2}),
+            RetryPlanner(),
+            "test",
+        )
+        result = agent.run("忘记密码怎么办？")
+        self.assertEqual(result.status, "tool_failure")
+        self.assertEqual(result.tool_calls, 2)
+        self.assertTrue(any(
+            e["event"] == "tool_action_rejected"
+            for e in result.trace
+        ))
 
 if __name__ == "__main__":
     unittest.main()
