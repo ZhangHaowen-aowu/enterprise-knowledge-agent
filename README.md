@@ -103,6 +103,7 @@ examples/cases.json    # 输入与预期状态
 examples/traces/mock/  # 实际离线运行结果和步骤记录
 examples/traces/llm/   # 真实 LLM 初轮测试记录（保留失败案例）
 examples/cases-retest.json  # 仅复测两个初轮失败案例
+examples/traces/llm-v3/  # V3 完整真实 LLM 验收，7/7 通过
 data/knowledge_base.json
  docs/01-requirements.md
  docs/02-solution.md
