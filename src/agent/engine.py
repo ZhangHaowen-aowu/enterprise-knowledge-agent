@@ -113,6 +113,28 @@ class KnowledgeAgent:
                     feedback = "Unknown tool or invalid arguments; choose a listed tool and an object"
                     trace.append({"step": step, "event": "invalid_action", "action": action, "feedback": feedback})
                     continue
+                # Allow at most one retry after a tool failure.
+                consecutive_failures = 0
+                for obs in reversed(observations):
+                    if obs["tool"] == name and not obs["ok"]:
+                        consecutive_failures += 1
+                    else:
+                        break
+
+                if consecutive_failures >= 2:
+                    feedback = (
+                        f"{name} has failed twice consecutively. "
+                        "Retry budget exhausted. Do not call this tool again. "
+                        "Return final tool_failure if no verified evidence is available."
+                    )
+                    trace.append({
+                        "step": step,
+                        "event": "tool_action_rejected",
+                        "tool": name,
+                        "reason": reason,
+                        "feedback": feedback,
+                    })
+                    continue
                 # A budget guardrail, not a hardcoded answer: the LLM still
                 # chooses the final status/wording after seeing this feedback.
                 empty_searches = sum(
